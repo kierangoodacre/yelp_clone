@@ -2,13 +2,16 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  resources :restaurant
+  resources :restaurants
 
-  get 'restaurants' => 'restaurants#index'
+  get '/' => 'restaurants#index'
 
-  get 'restaurants/new' => 'restaurants#new'
+  get '/new' => 'restaurants#new'
 
-  post 'restaurants' => 'restaurants#create'
+  post '/' => 'restaurants#create'
+
+  get '/:id' => 'restaurants#show'
+
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
