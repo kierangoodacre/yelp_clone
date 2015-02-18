@@ -13,4 +13,14 @@ feature 'reviewing' do
 		expect(current_path).to eq'/restaurants'
 		expect(page).to have_content('so so')
 	end
+
+	scenario 'when restaurant is deleted so are reviews' do
+		visit '/restaurants'
+		click_link 'Review KFC'
+	  fill_in "Thoughts", with: 'meh'
+	  select '3', from: 'Rating'
+	  click_button 'Leave Review'
+    click_link 'Delete KFC'
+    expect(page).to_not have_content('meh')
+	end
 end
