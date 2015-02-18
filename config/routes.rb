@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  resources :restaurants
+  resources :restaurants do
+    resources :reviews
+  end
 
   get '/' => 'restaurants#index'
 
@@ -13,6 +15,8 @@ Rails.application.routes.draw do
   get '/:id' => 'restaurants#show'
 
   delete '/:id/edit' => 'restaurants#destroy'
+
+
 
 
   # You can have the root of your site routed with "root"
