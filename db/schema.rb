@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20150219104125) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "provide"
+    t.string   "provider"
     t.string   "uid"
   end
 
