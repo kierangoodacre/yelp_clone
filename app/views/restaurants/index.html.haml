@@ -1,3 +1,4 @@
+= @signed_in_user
 - if @restaurants.any?
   - @restaurants.each do |restaurant|
     = link_to restaurant.name, restaurant_path(restaurant)

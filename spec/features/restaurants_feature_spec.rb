@@ -1,6 +1,10 @@
 require 'rails_helper'
+require_relative '../helpers/session_helpers'
 
 feature 'restaurants'  do
+
+include SessionHelpers
+
 	context 'no restaurants have been added' do
 		scenario 'should display a prompt to add a restaurant' do
 			visit '/'
@@ -23,10 +27,8 @@ feature 'restaurants'  do
 
 	context 'creating restaurants' do
 		scenario 'prompts user to fill out a form, then displays the new restaurant' do
-		  visit '/restaurants'
-		  click_link 'Add a restaurant'
-		  fill_in 'Name', with: 'KFC'
-		  click_button 'Create Restaurant'
+      sign_up
+      make_restaurant
 		  expect(page).to have_content 'KFC'
 		  expect(current_path).to eq '/restaurants'
 		end
@@ -37,7 +39,7 @@ feature 'restaurants'  do
 		let!(:kfc){Restaurant.create(name:'KFC')}
 
 		scenario 'lets a user view a restaurant' do
-			visit '/restaurants'
+      sign_up
 			click_link 'KFC'
 			expect(page).to have_content 'KFC'
 			expect(current_path).to eq "/restaurants/#{kfc.id}"
@@ -46,10 +48,10 @@ feature 'restaurants'  do
 
   context 'editing restaurants' do
 
-    before {Restaurant.create name: 'KFC'}
 
     scenario 'let a user edit a restaurant' do
-  	  visit '/restaurants'
+      sign_up
+      make_restaurant
   	  click_link 'Edit KFC'
   	  fill_in 'Name', with: 'Kentucky Friend Chicken'
   	  click_button 'Update Restaurant'
@@ -63,7 +65,7 @@ feature 'restaurants'  do
   	before {Restaurant.create name:'KFC'}
 
   	scenario 'removes a restaurant when a user clicks a delete link' do
-  		visit '/restaurants'
+      sign_up
   		click_link 'Delete KFC'
   		expect(page).not_to have_content 'KFC'
   		expect(page).to have_content 'Restaurant deleted successfully'
@@ -74,7 +76,7 @@ feature 'restaurants'  do
 
   	context 'invalid restaurant' do
   		it 'does not let you submit a name that is to short' do
-  			visit '/restaurants'
+  			sign_up
   			click_link 'Add a restaurant'
   			fill_in 'Name', with: 'kf'
   			click_button 'Create Restaurant'
@@ -83,6 +85,15 @@ feature 'restaurants'  do
   		end
   	end
 
+  end
+
+  context 'log in' do
+    it 'must be logged in to create restaurant' do
+      visit '/restaurants'
+      click_link 'Add a restaurant'
+      save_and_open_page
+      expect(page).to have_content 'You need to sign in or sign up before continuing.'
+    end
   end
 end
 

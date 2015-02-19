@@ -1,10 +1,14 @@
 require 'rails_helper'
+require_relative '../helpers/session_helpers'
 
 feature 'reviewing' do
+
+	include SessionHelpers
+
 	before{Restaurant.create name: "KFC"}
 
 	scenario 'allows users to leave a review using a form' do
-		visit '/restaurants'
+		sign_up
 		click_link 'Review KFC'
 		fill_in 'Thoughts', with: 'so so'
 		select '3', from: 'Rating'
@@ -15,7 +19,7 @@ feature 'reviewing' do
 	end
 
 	scenario 'when restaurant is deleted so are reviews' do
-		visit '/restaurants'
+		sign_up
 		click_link 'Review KFC'
 	  fill_in "Thoughts", with: 'meh'
 	  select '3', from: 'Rating'

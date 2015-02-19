@@ -1,4 +1,8 @@
 require 'rails_helper'
+require_relative '../helpers/session_helpers'
+
+
+include SessionHelpers
 
 context "user not signed in and on the homepage" do
   it "should see a 'sign in' link and a 'sign up' link" do
@@ -33,5 +37,16 @@ context "user signed in on the homepage" do
     visit('/')
     expect(page).not_to have_link('Sign in')
     expect(page).not_to have_link('Sign up')
+  end
+
+  context 'editing reviews' do
+    it 'can only edit if you created restaurant' do
+      make_restaurant
+      click_link('Sign out')
+      sign_up_two
+      click_link('Edit KFC')
+      save_and_open_page
+      expect(page).to have_content('nope')
+    end
   end
 end
