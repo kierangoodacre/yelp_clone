@@ -62,10 +62,9 @@ include SessionHelpers
 
   context 'deleting restaurants' do
 
-  	before {Restaurant.create name:'KFC'}
-
   	scenario 'removes a restaurant when a user clicks a delete link' do
       sign_up
+      make_restaurant
   		click_link 'Delete KFC'
   		expect(page).not_to have_content 'KFC'
   		expect(page).to have_content 'Restaurant deleted successfully'
@@ -91,7 +90,6 @@ include SessionHelpers
     it 'must be logged in to create restaurant' do
       visit '/restaurants'
       click_link 'Add a restaurant'
-      save_and_open_page
       expect(page).to have_content 'You need to sign in or sign up before continuing.'
     end
   end

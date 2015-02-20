@@ -44,9 +44,8 @@ context "user signed in on the homepage" do
       make_restaurant
       click_link('Sign out')
       sign_up_two
-      click_link('Edit KFC')
-      save_and_open_page
-      expect(page).to have_content('nope')
+      click_link('Delete KFC')
+      expect(page).to have_content('Cannot delete restaurants you have not created')
     end
   end
 end
