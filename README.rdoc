@@ -1,17 +1,18 @@
-###Yelp_Clone
+Yelp_Clone
 
-##Introduction
+Introduction
 --------------------
 
 For our Week 9 project we were set the challenge of recreating Yelp using Rails. 
 
-##Contributors
+Contributors
 --------------------
 
 - Kieran Goodacre https://github.com/kierangoodacre
 - Hannah Carney
 
-##Technologies
+
+Technologies
 --------------------------------
 
 |Languages |Frameworks|Testing  |
@@ -22,13 +23,12 @@ For our Week 9 project we were set the challenge of recreating Yelp using Rails.
 |          |Moustache |         |
 
 
-##Learning Outcomes
+Learning Outcomes
 -----------------
 
 We succeeded in learning Rails and further enhancing our knowlege dealing with databases.
 
-
-##Enhancements
+Enhancements
 ------------------
 
 Better improve the front design, which I haven't had time to do yet
