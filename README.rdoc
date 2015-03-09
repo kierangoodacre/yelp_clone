@@ -1,28 +1,35 @@
-== README
+Yelp_Clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Introduction
+--------------------
 
-Things you may want to cover:
+For our Week 9 project we were set the challenge of recreating Yelp using Rails. 
 
-* Ruby version
+Contributors
+--------------------
 
-* System dependencies
+- Kieran Goodacre https://github.com/kierangoodacre
+- Hannah Carney
 
-* Configuration
+Technologies
+--------------------------------
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+|Languages |Frameworks|Testing  |
+|----------|----------|---------|
+|Ruby      |Rails     | Rspec   |
+|CSS       |EJS       | Capybara|
+|HTML      |jQuery    |         |
+|          |Moustache |         |
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Learning Outcomes
+-----------------
+
+We succeeded in learning Rails and further enhancing our knowlege dealing with databases.
+
+
+Enhancements
+------------------
+
+Better improve the front design, which I haven't had time to do yet
+
